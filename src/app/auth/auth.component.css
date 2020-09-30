@@ -1,0 +1,101 @@
+form {
+    margin-top: 3rem;
+}
+
+label {
+    font-weight: 400;
+}
+
+/* Style input fields */
+input {
+    border: 2px solid #7677B7;
+}
+
+input:focus {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    border-color: #7677B7;
+    background: #7677B7;
+    color: #ffffff;
+    transition: border-color 0.3s, background 0.3s, color 0.3s;
+}
+
+/* Style invalid input field */
+input.ng-touched.ng-invalid {
+    border-color: #d65151;
+    background: #d65151;
+}
+
+/* Style the button */
+.signup-btn, .signin-btn {
+    width: 100%;
+    padding: 10px;
+    background: #7677B7;
+    color: #ffffff;
+    border: 2px solid #7677B7;
+    border-radius: 4px;
+}
+
+.signup-btn:hover, .signin-btn:hover {
+    border-color: #5C5D90;
+    background: #5C5D90;
+    transition: border-color 0.3s, background 0.3s;
+}
+
+.signup-btn:focus, .signin-btn:focus {
+    outline: none;
+    border-color: #4A4B7A;
+    background: #4A4B7A;
+    transition: border-color 0.3s, background 0.3s;
+}
+
+/* Style disabled buttons */
+.signup-btn:disabled, .signin-btn:disabled {
+    cursor: not-allowed;
+}
+
+.signup-btn:disabled:hover, .signin-btn:disabled:hover {
+    background: #7677B7;
+    border-color: #7677B7;
+}
+
+/* Style signin and signup links */
+.auth-btn {
+    margin-top: 10rem;
+    padding: 20px;
+    border-bottom: 0;
+    border-left: 0;
+    border-right: 0;
+    border-top: 8px solid #41439C;
+    background-color: #FFF594;
+    color: #b1aeae;
+    width: 50%;
+}
+
+.auth-btn:focus {
+    outline: none;
+}
+
+.auth-btn:hover {
+    background-color: #E0D147;
+    color: #ffffff;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Style active button */
+.auth-btn.active {
+    background-color: #D3C32C;
+    color: #ffffff;
+    font-size: 115%;
+}
+
+/* Style help block */
+.help-block {
+    color: #d65151;
+}
+
+/* Position loading spinner */
+.loading-spinner {
+    text-align: center;
+    margin-top: 5rem;
+}

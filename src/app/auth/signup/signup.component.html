@@ -1,0 +1,65 @@
+<app-alert [message]="message" *ngIf="error || success" (close)="onHandleResponse()"></app-alert>
+<form class="col-lg-4 col-md-6 col-sm-8 col-xs-12 col-lg-offset-4 col-md-offset-3 col-sm-offset-2"
+      [formGroup]="signUpForm"
+      (ngSubmit)="onSubmit()">
+    <!--Username input field-->
+      <div class="form-group">
+        <label>Username</label>
+        <input type="text" class="form-control" formControlName="username">
+        
+        <!--Error messages-->
+        <div *ngIf="!signUpForm.get('username').valid && (signUpForm.get('username').touched || signUpForm.get('username').dirty)">
+            <span class="help-block" *ngIf="signUpForm.get('username').errors?.required">{{ required }}</span>
+            <span class="help-block" *ngIf="signUpForm.get('username').errors?.pattern">{{ usernameRegex }}</span>
+        </div>
+    </div>
+
+    <!--Full name input field-->
+    <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" class="form-control" formControlName="fullName">
+
+        <!--Error message-->
+        <span class="help-block" *ngIf="signUpForm.get('fullName').touched && signUpForm.get('fullName').errors?.required">{{ required }}</span>
+    </div>
+
+    <!--Email input field-->
+    <div class="form-group">
+        <label>Email</label>
+        <input type="text" class="form-control" formControlName="email" autocomplete="username">
+        
+        <!--Error messages-->
+        <div *ngIf="!signUpForm.get('email').valid && (signUpForm.get('email').touched || signUpForm.get('email').dirty)">
+            <span class="help-block" *ngIf="signUpForm.get('email').errors?.required">{{ required }}</span>
+            <span class="help-block" *ngIf="signUpForm.get('email').errors?.pattern">{{ email }}</span>
+        </div>
+    </div>
+
+    <!--Input fields for passwords-->
+    <div class="form-group" formGroupName="passwords">
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" formControlName="pwd" autocomplete="new-password">
+
+            <!--Error messages-->
+            <div *ngIf="!signUpForm.get('passwords.pwd').valid && (signUpForm.get('passwords.pwd').touched || signUpForm.get('passwords.pwd').dirty)">
+                <span class="help-block" *ngIf="signUpForm.get('passwords.pwd').errors?.required">{{ required }}</span>
+                <span class="help-block" *ngIf="signUpForm.get('passwords.pwd').errors?.minlength">{{ minlength }}</span>
+                <span class="help-block" *ngIf="signUpForm.get('passwords.pwd').errors?.pattern">{{ pwdRegex }}</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Confirm Password</label>
+            <input type="password" class="form-control" formControlName="confirmPwd" autocomplete="new-password">
+
+            <!--Error messages-->
+            <div *ngIf="!signUpForm.get('passwords.confirmPwd').valid && (signUpForm.get('passwords.confirmPwd').touched || signUpForm.get('passwords.confirmPwd').dirty)">
+                <span class="help-block" *ngIf="signUpForm.get('passwords.confirmPwd').errors?.required">{{ required }}</span>
+                <span class="help-block" *ngIf="signUpForm.get('passwords.confirmPwd').errors?.minlength">{{ minlength }}</span>
+                <span class="help-block" *ngIf="signUpForm.get('passwords.confirmPwd').errors?.pattern">{{ pwdRegex }}</span>
+                <span class="help-block" *ngIf="signUpForm.get('passwords.confirmPwd').errors?.passwordMismatch">{{ passwordMismatch }}</span>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="signup-btn" [disabled]="!signUpForm.valid">Signup</button>
+</form>

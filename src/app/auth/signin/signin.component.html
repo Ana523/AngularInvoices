@@ -1,0 +1,39 @@
+<!--Initialize loading spinner component if the server has not yet sent the response-->
+<div class="loading-spinner" *ngIf="isLoading">
+    <app-loading-spinner></app-loading-spinner>
+</div>
+
+<!--Initialize alert component if there was an error with signing user in-->
+<app-alert [message]="message" *ngIf="error" (close)="onHandleResponse()"></app-alert>
+
+<!--Display form-->
+<form class="col-lg-4 col-md-6 col-sm-8 col-xs-12 col-lg-offset-4 col-md-offset-3 col-sm-offset-2"
+      [formGroup]="signInForm"
+      (ngSubmit)="onSubmit()"
+      *ngIf="!isLoading">
+    <!--Email input field-->
+    <div class="form-group">
+        <label>Email</label>
+        <input type="text" class="form-control" formControlName="email" autocomplete="username">
+
+        <!--Error messages-->
+        <div *ngIf="!signInForm.get('email').valid && (signInForm.get('email').touched || signInForm.get('email').dirty)">
+            <span class="help-block" *ngIf="signInForm.get('email').errors?.required">{{ required }}</span>
+            <span class="help-block" *ngIf="signInForm.get('email').errors?.pattern">{{ email }}</span>
+        </div>
+    </div>
+
+    <!--Password input field-->
+    <div class="form-group">
+        <label>Password</label>
+        <input type="password" class="form-control" formControlName="pwd" autocomplete="current-password">
+        
+        <!--Error messages-->
+        <div *ngIf="!signInForm.get('pwd').valid && (signInForm.get('pwd').touched || signInForm.get('pwd').dirty)">
+            <span class="help-block" *ngIf="signInForm.get('pwd').errors?.required">{{ required }}</span>
+            <span class="help-block" *ngIf="signInForm.get('pwd').errors?.minlength">{{ minlength }}</span>
+            <span class="help-block" *ngIf="signInForm.get('pwd').errors?.pattern">{{ pwdRegex }}</span>
+        </div>
+    </div>
+    <button type="submit" class="signin-btn" [disabled]="!signInForm.valid">Signin</button>
+</form>

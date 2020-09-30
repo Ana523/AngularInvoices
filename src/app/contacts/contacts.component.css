@@ -1,0 +1,65 @@
+form {
+    margin-top: 8rem;
+}
+
+label {
+    font-weight: 400;
+}
+
+/* Style input fields */
+input {
+    border: 2px solid #7677B7;
+}
+
+input:focus {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    border-color: #53288F;
+    background: #53288F;
+    color: #ffffff;
+    transition: border-color 0.3s, background 0.3s, color 0.3s;
+}
+
+/* Style invalid input field */
+input.ng-touched.ng-invalid {
+    border-color: #d65151;
+    background: #d65151;
+}
+
+/* Style the button */
+.add-contact-btn {
+    width: 100%;
+    padding: 10px;
+    background: #8B6FB3;
+    color: #ffffff;
+    border: 2px solid #8B6FB3;
+    border-radius: 4px;
+}
+
+.add-contact-btn:hover {
+    border-color: #613998;
+    background: #613998;
+    transition: border-color 0.3s, background 0.3s;
+}
+
+.add-contact-btn:focus {
+    outline: none;
+    border-color: #53288F;
+    background: #53288F;
+    transition: border-color 0.3s, background 0.3s;
+}
+
+/* Style disabled buttons */
+.add-contact-btn:disabled {
+    cursor: not-allowed;
+}
+
+.add-contact-btn:disabled:hover {
+    background: #8B6FB3;
+    border-color: #8B6FB3;
+}
+
+/* Style help block */
+.help-block {
+    color: #d65151;
+}
